@@ -1,0 +1,58 @@
+{
+    "albums": [
+        {
+            "albumId": 1,
+            "title": "Cardi B, Doja Cat, SZA, Nicki Minaj, Beyonce",
+            "url": "https://open.spotify.com/playlist/37i9dQZF1DX6GwdWRQMQpq?si=f50b3eb543d04677",
+            "thumbnailUrl": "https://i.scdn.co/image/ab67706f00000003cfb9853b43822a01fe707f9a"
+        },
+        {
+            "albumId": 2,
+            "title": "Ed Sheeran, The Weeknd, Selena Gomez, Ariana Grande, Demi Lovato",
+            "url": "https://open.spotify.com/playlist/37i9dQZF1DX2iRL6tJD46O?si=bcda637e09cd41ae",
+            "thumbnailUrl": "https://i.scdn.co/image/ab67706f000000033edd7170d0fa40df191995db"
+        },
+        {
+            "albumId": 3,
+            "title": "Lil Nas X, Dua Lipa, Harry Stlyes, Coldplay, Khalid",
+            "url": "https://open.spotify.com/playlist/37i9dQZF1DX3rxVfibe1L0?si=4941da3e72b541df",
+            "thumbnailUrl": "https://i.scdn.co/image/ab67706f00000002aa93fe4e8c2d24fc62556cba"
+        },
+        {
+            "albumId": 4,
+            "title": "The Beatles, The Vamps, OneRepublic, The Killers, The 1975",
+            "url": "https://open.spotify.com/playlist/37i9dQZF1DWYBO1MoTDhZI?si=7701a291b9604aa4",
+            "thumbnailUrl": "https://i.scdn.co/image/ab67706f000000037dc2a0fb4bfe0d07294f685e"
+        }
+    ],
+    "podcasts": [
+        {
+            "podcastId": 1,
+            "title": "Bir garip VB hikayesi",
+            "subtitle": "Show • Veli Bacık",
+            "url": "https://open.spotify.com/show/3bagl1DYdc08T87Q79CT4b?si=fddff9621e0d48bd",
+            "thumbnailUrl": "https://a.ltrbxd.com/resized/sm/upload/0q/uw/ja/m2/good-will-hunting-1200-1200-675-675-crop-000000.jpg?k=8e5013e14b"
+        },
+        {
+            "podcastId": 2,
+            "title": "6 Minutes English",
+            "subtitle": "Show • BBC Radio",
+            "url": "https://open.spotify.com/show/3CF9ANEicXGxEROA3cOryE?si=49e487870bcf4ac3",
+            "thumbnailUrl": "https://i.scdn.co/image/ab6765630000ba8ac0f46618c14d6640a1fe0b95"
+        },
+        {
+            "podcastId": 3,
+            "title": "Barış Özcan ile 111 Hz",
+            "subtitle": "Show • Podbee Media",
+            "url": "https://open.spotify.com/show/5NbxzMRbuun0SIOh7GKMbk?si=509c3f9d46b1423c",
+            "thumbnailUrl": "https://i.scdn.co/image/ab6765630000ba8a29fa10ab45549632ac87c331"
+        },
+        {
+            "podcastId": 4,
+            "title": "Ege Fitness Motivasyonlar",
+            "subtitle": "Show • Ege Fitness",
+            "url": "https://open.spotify.com/show/2eZOTKreT10INezwYUN959?si=80a2f155dbbd472b",
+            "thumbnailUrl": "https://i.scdn.co/image/ab6765630000ba8ac35d396116be3f60c632e493"
+        }
+    ]
+}
