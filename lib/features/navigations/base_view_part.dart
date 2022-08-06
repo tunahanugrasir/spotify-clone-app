@@ -55,7 +55,7 @@ class MusicPlayer extends StatelessWidget {
     return Align(
       alignment: Alignment(_xAxis, _yAxis),
       child: Padding(
-        padding: const ProjectPaddingUtils.symmetricHorizontalLow(),
+        padding: const EdgeInsets.symmetric(horizontal: 3),
         child: Container(
           height: context.height * 0.07,
           decoration: BoxDecoration(
@@ -78,7 +78,7 @@ class MusicPlayer extends StatelessWidget {
 
   Padding _textBox(BuildContext context) {
     return Padding(
-      padding: const ProjectPaddingUtils.onlyLeft(),
+      padding: const PaddingConstants.onlyLeft(),
       child: SizedBox(
         height: context.height / 20,
         child: RichText(
@@ -100,7 +100,7 @@ class MusicPlayer extends StatelessWidget {
 
   Padding _imageBox() {
     return Padding(
-      padding: const ProjectPaddingUtils.allLow(),
+      padding: const PaddingConstants.allLow(),
       child: ClipRRect(
         borderRadius: ProjectBorderRadiusUtils.circularLow(),
         child: AssetImages.currentMusic.getImage(),
@@ -121,19 +121,28 @@ class PlayAndPauseIcon extends StatefulWidget {
 class _PlayAndPauseIconState extends State<PlayAndPauseIcon> with TickerProviderStateMixin {
   late final AnimationController _animationController;
   bool isTap = false;
+  bool isPlaying = false;
+  Duration duration = Duration.zero;
+  Duration position = Duration.zero;
+
+  AssetsAudioPlayer player = AssetsAudioPlayer();
+
   @override
   void initState() {
     super.initState();
     _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    player.open(Audio('assets/sounds/mutlu_ol_yeter.mp3'), autoStart: false, showNotification: true);
   }
 
-  void changeAnimation() {
+  Future<void> changeAnimation() async {
     setState(() {
       isTap = !isTap;
       if (isTap == true) {
         _animationController.forward();
+        player.play();
       } else {
         _animationController.reverse();
+        player.pause();
       }
     });
   }
@@ -142,9 +151,9 @@ class _PlayAndPauseIconState extends State<PlayAndPauseIcon> with TickerProvider
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 20.0, left: 10),
-      child: GestureDetector(
-          onTap: changeAnimation,
-          child: AnimatedIcon(
+      child: IconButton(
+          onPressed: changeAnimation,
+          icon: AnimatedIcon(
             progress: _animationController,
             icon: AnimatedIcons.play_pause,
             size: 40,
@@ -173,20 +182,7 @@ class BaseBottomBar extends StatelessWidget {
         onTap: (int value) {
           context.read<BaseViewModel>().selectedTabChange(value);
         },
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.home),
-            label: BottomNavBar.home.getText(),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.search_outlined),
-            label: BottomNavBar.search.getText(),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.library_books_outlined),
-            label: BottomNavBar.yourLibrary.getText(),
-          ),
-        ],
+        items: BottomNavigationListModel().toWidgets(),
       ),
     );
   }

@@ -17,6 +17,17 @@ extension SpotifTextsExtension on BottomNavBar {
         return 'Your Library';
     }
   }
+
+  IconData getIcon() {
+    switch (this) {
+      case BottomNavBar.home:
+        return Icons.home;
+      case BottomNavBar.search:
+        return Icons.search;
+      case BottomNavBar.yourLibrary:
+        return Icons.library_books_outlined;
+    }
+  }
 }
 
 extension SpotifyChangePages on BottomNavBar {
@@ -25,7 +36,7 @@ extension SpotifyChangePages on BottomNavBar {
       case 0:
         return const HomeView();
       case 1:
-        return const SearchView();
+        return SearchView();
       case 2:
         return const LibraryView();
     }

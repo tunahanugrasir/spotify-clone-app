@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class LibraryView extends StatefulWidget {
   const LibraryView({Key? key}) : super(key: key);
@@ -10,8 +10,17 @@ class LibraryView extends StatefulWidget {
 class _LibraryViewState extends State<LibraryView> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('LibraryView'),
+    return const Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            leading: Text('Search'),
+            actions: [
+              Icon(Icons.camera_alt_outlined),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

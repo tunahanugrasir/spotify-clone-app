@@ -1,7 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:developer';
-
 import 'package:mobx/mobx.dart';
 
 import '../../models/album_model.dart';
@@ -31,8 +29,6 @@ abstract class _HomeViewModelBase with Store {
     final podcastResponse = await spotifyService.fetchSpotifyPodcastDatas();
     albumModelItems = albumResponse ?? [];
     podcastModelItems = podcastResponse ?? [];
-    inspect(albumModelItems);
-    inspect(podcastModelItems);
     _changeLoading();
   }
 
