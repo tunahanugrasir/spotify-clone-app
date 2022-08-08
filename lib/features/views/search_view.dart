@@ -35,174 +35,177 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
           _sliverSearchBar(),
         ];
       },
-      body: ListView(padding: const EdgeInsets.symmetric(horizontal: 8), children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24.0),
-          child: Text(
-            'Your top genres',
-            style: ProductTheme.textTheme.subtitle1,
-          ),
-        ),
-        SizedBox(
-          height: 225,
-          width: MediaQuery.of(context).size.width,
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: context.width / (0.3 * context.height),
-              crossAxisSpacing: 7,
-              mainAxisSpacing: 7,
+      body: ListView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: Text(
+                'Your top genres',
+                style: ProductTheme.textTheme.subtitle1,
+              ),
             ),
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 4,
-            padding: const EdgeInsets.all(0),
-            itemBuilder: (context, index) {
-              return GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 24.0),
-          child: Text(
-            'Browse all',
-            style: ProductTheme.textTheme.subtitle1,
-          ),
-        ),
-        GridView.count(
-            shrinkWrap: true,
-            physics: const BouncingScrollPhysics(),
-            crossAxisCount: 2,
-            childAspectRatio: context.width / (0.3 * context.height),
-            crossAxisSpacing: 7,
-            mainAxisSpacing: 7,
-            children: [
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
+            SizedBox(
+              height: 225,
+              width: MediaQuery.of(context).size.width,
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: context.width / (0.3 * context.height),
+                  crossAxisSpacing: 7,
+                  mainAxisSpacing: 7,
+                ),
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 4,
+                padding: const EdgeInsets.all(0),
+                itemBuilder: (context, index) {
+                  return GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  );
+                },
               ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Text(
+                'Browse all',
+                style: ProductTheme.textTheme.subtitle1,
               ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-              GenreCards(
-                backgroundColor: Colors.lime.shade800,
-                genreImageURL:
-                    "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-                genreName: 'Hip-Hop',
-              ),
-            ])
-      ]),
+            ),
+            GridView.count(
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
+                crossAxisCount: 2,
+                childAspectRatio: context.width / (0.3 * context.height),
+                crossAxisSpacing: 7,
+                mainAxisSpacing: 7,
+                children: [
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                  GenreCards(
+                    backgroundColor: Colors.lime.shade800,
+                    genreImageURL:
+                        "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+                    genreName: 'Hip-Hop',
+                  ),
+                ])
+          ]),
     );
   }
 
@@ -211,7 +214,7 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
       pinned: true,
       expandedHeight: 0,
       toolbarHeight: 0,
-      backgroundColor: ProductColorScheme.primaryColor,
+      backgroundColor: ColorsScheme.primary,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: EdgeInsets.only(left: 8.0, right: 8, top: 16),
@@ -233,7 +236,7 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
 
   SliverAppBar _sliverAppBar() {
     return SliverAppBar(
-      backgroundColor: ProductColorScheme.primaryColor,
+      backgroundColor: ColorsScheme.primary,
       expandedHeight: 0,
       floating: false,
       pinned: false,

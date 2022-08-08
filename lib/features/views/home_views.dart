@@ -31,9 +31,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(body: Observer(builder: (_) {
       return _homeViewModel.isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? _progressIndicator()
           : SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               padding: const PaddingConstants.homeViewPadding(),
@@ -48,10 +46,10 @@ class _HomeViewState extends State<HomeView> {
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            stops: const [0, 0.5],
+                            stops: const [0, 0.4],
                             tileMode: TileMode.repeated,
                             colors: [
-                              ProductColorScheme.gradientColor,
+                              ColorsScheme.gradient,
                               Colors.black.withOpacity(0.6),
                             ],
                           ),
@@ -83,6 +81,14 @@ class _HomeViewState extends State<HomeView> {
               ),
             );
     }));
+  }
+
+  Center _progressIndicator() {
+    return const Center(
+      child: CircularProgressIndicator(
+        color: ColorsScheme.secondary,
+      ),
+    );
   }
 
   Widget baseTitleAndButtons(BuildContext context, bool isHasButton, String title) {
@@ -122,9 +128,9 @@ class _HomeViewState extends State<HomeView> {
                   width: 7,
                   decoration: BoxDecoration(
                     borderRadius: ProjectBorderRadiusUtils.circularMax(),
-                    color: ProductColorScheme.gradientColor,
+                    color: ColorsScheme.gradient,
                     border: Border.all(
-                      color: ProductColorScheme.primaryColor,
+                      color: ColorsScheme.primary,
                       width: 0.5,
                     ),
                   ),

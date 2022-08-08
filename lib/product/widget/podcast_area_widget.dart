@@ -14,6 +14,7 @@ class PodcastArea extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.only(top: 16),
         itemCount: homeViewModel.podcastModelItems.length,

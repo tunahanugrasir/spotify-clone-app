@@ -36,7 +36,7 @@ extension SpotifyChangePages on BottomNavBar {
       case 0:
         return const HomeView();
       case 1:
-        return SearchView();
+        return const SearchView();
       case 2:
         return const LibraryView();
     }

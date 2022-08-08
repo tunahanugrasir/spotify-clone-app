@@ -33,7 +33,7 @@ class MusicProgression extends StatelessWidget {
         height: context.height * 0.003,
         width: context.width,
         decoration: BoxDecoration(
-          color: ProductColorScheme.secondaryColor,
+          color: ColorsScheme.secondary,
           borderRadius: ProjectBorderRadiusUtils.circularMax(),
         ),
       ),
@@ -41,15 +41,24 @@ class MusicProgression extends StatelessWidget {
   }
 }
 
-class MusicPlayer extends StatelessWidget {
-  final double _xAxis = 0;
-  final double _yAxis = 0.86;
-  final double _textHeight = 1.5;
-  final double _letterSpacing = 0.8;
-
+class MusicPlayer extends StatefulWidget {
   const MusicPlayer({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<MusicPlayer> createState() => _MusicPlayerState();
+}
+
+class _MusicPlayerState extends State<MusicPlayer> {
+  final double _xAxis = 0;
+
+  final double _yAxis = 0.86;
+
+  final double _textHeight = 1.5;
+
+  final double _letterSpacing = 0.8;
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -59,7 +68,7 @@ class MusicPlayer extends StatelessWidget {
         child: Container(
           height: context.height * 0.07,
           decoration: BoxDecoration(
-            color: ProductColorScheme.musicPlayerBackgroundColor2,
+            color: ColorsScheme.musicPlayerBackgroundColor2,
             borderRadius: ProjectBorderRadiusUtils.circularLow(),
           ),
           child: Row(
@@ -67,7 +76,17 @@ class MusicPlayer extends StatelessWidget {
               _imageBox(),
               _textBox(context),
               const Spacer(),
-              const Icon(Icons.speaker_group_outlined, color: ProductColorScheme.greyColor),
+              IconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) {
+                          return const BottomSheetModel();
+                        });
+                  },
+                  icon: const Icon(Icons.speaker_group_outlined, color: ColorsScheme.grey)),
               const PlayAndPauseIcon(),
             ],
           ),
@@ -84,7 +103,7 @@ class MusicPlayer extends StatelessWidget {
         child: RichText(
           text: TextSpan(
             style: TextStyle(
-              color: ProductColorScheme.secondaryColor,
+              color: ColorsScheme.secondary,
               height: _textHeight,
               letterSpacing: _letterSpacing,
             ),

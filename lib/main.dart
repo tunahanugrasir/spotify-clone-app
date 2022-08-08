@@ -8,7 +8,7 @@ import 'product/theme/product_theme.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
+    statusBarColor: ColorsScheme.transparent,
   ));
   runApp(const MyApp());
 }
@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: ProductConstants.title,
+      theme: ThemeData(fontFamily: ProductConstants.font),
       debugShowCheckedModeBanner: ProductConstants.debugMode,
       themeMode: ThemeMode.dark,
       darkTheme: darkTheme(),

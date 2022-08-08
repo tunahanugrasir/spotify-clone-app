@@ -9,7 +9,8 @@ import '../../product/constants/product_constants.dart';
 import '../../product/theme/product_theme.dart';
 import '../../utilities/extensions/enum_extension.dart';
 import '../../utilities/project_utils.dart';
-import 'base_view_model.dart';
+import '../view_model/base_view_model.dart';
+import 'bottom_sheet_view.dart';
 
 part 'base_view_part.dart';
 

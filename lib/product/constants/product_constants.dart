@@ -1,5 +1,6 @@
 class ProductConstants {
   static const String title = 'Spotify Clone';
+  static const String font = 'Gotham';
   static const double zeroElevation = 0;
   static const bool debugMode = false;
   static const bool scfExtendBody = true;
