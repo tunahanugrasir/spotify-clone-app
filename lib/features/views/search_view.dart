@@ -60,8 +60,8 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
                 itemCount: 4,
                 padding: const EdgeInsets.all(0),
                 itemBuilder: (context, index) {
-                  return GenreCards(
-                    backgroundColor: Colors.lime.shade800,
+                  return const GenreCards(
+                    backgroundColor: Color(0xff1DB954),
                     genreImageURL:
                         "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
                     genreName: 'Hip-Hop',
@@ -84,14 +84,14 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
                 crossAxisSpacing: 7,
                 mainAxisSpacing: 7,
                 children: [
-                  GenreCards(
-                    backgroundColor: Colors.lime.shade800,
+                  const GenreCards(
+                    backgroundColor: Color(0xff1DB954),
                     genreImageURL:
                         "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
                     genreName: 'Hip-Hop',
                   ),
-                  GenreCards(
-                    backgroundColor: Colors.lime.shade800,
+                  const GenreCards(
+                    backgroundColor: Color(0xff1DB954),
                     genreImageURL:
                         "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
                     genreName: 'Hip-Hop',

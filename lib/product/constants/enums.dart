@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../features/views/home_views.dart';
+import '../../features/views/home_view.dart';
 import '../../features/views/library_view.dart';
 import '../../features/views/search_view.dart';
 

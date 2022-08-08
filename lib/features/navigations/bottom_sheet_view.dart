@@ -11,7 +11,7 @@ class BottomSheetModel extends StatefulWidget {
 }
 
 class _BottomSheetModelState extends State<BottomSheetModel> {
-  double sliderValue = 0;
+  double sliderValue = 77;
 
   changeValue(sliderV) {
     setState(() {
