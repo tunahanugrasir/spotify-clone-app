@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../utilities/project_utils.dart';
 import '../constants/product_constants.dart';
 
 class ColorsScheme {
@@ -12,17 +13,50 @@ class ColorsScheme {
   static const Color bottomNavigationBarBackgrounColor = Color.fromARGB(0, 255, 255, 255);
   static const Color musicPlayerBackgroundColor = Color(0xff191919);
   static const Color musicPlayerBackgroundColor2 = Color(0xff430906);
+  static const Color title = Colors.white38;
+  static const Color subtitle = Colors.white70;
 }
 
 class ProductTheme {
   static const textTheme = TextTheme(
+    headline1: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: ColorsScheme.subtitle),
+    headline2: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: ColorsScheme.secondary),
+    headline3: TextStyle(fontSize: 13, color: ColorsScheme.grey),
+    headline4: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: ColorsScheme.secondary),
     headline5: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    headline6: TextStyle(color: ColorsScheme.secondary, fontWeight: FontWeight.bold, fontSize: 20),
+    headline6: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: ColorsScheme.secondary),
     subtitle1: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: ColorsScheme.secondary),
-    subtitle2: TextStyle(fontWeight: FontWeight.bold),
+    subtitle2: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
     bodyText1: TextStyle(fontSize: 12),
     bodyText2: TextStyle(fontSize: 12, color: ColorsScheme.grey),
     labelMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: ColorsScheme.primary),
+  );
+
+  static const baseBottomBoxDecoration = BoxDecoration(
+    gradient: LinearGradient(
+        colors: [Color.fromARGB(233, 0, 0, 0), Colors.black54],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        stops: [0.7, 1]),
+  );
+
+  final musicPlayerBoxDecoration = BoxDecoration(
+    color: ColorsScheme.musicPlayerBackgroundColor2,
+    borderRadius: ProjectBorderRadiusUtils.circularLow(),
+  );
+
+  final musicProgressionBoxDecoration = BoxDecoration(
+    color: ColorsScheme.secondary,
+    borderRadius: ProjectBorderRadiusUtils.circularMax(),
+  );
+
+  final headerBoxDecoration = BoxDecoration(
+    borderRadius: ProjectBorderRadiusUtils.circularMax(),
+    color: ColorsScheme.gradient,
+    border: Border.all(
+      color: ColorsScheme.primary,
+      width: 0.5,
+    ),
   );
 }
 
@@ -45,7 +79,7 @@ ThemeData darkTheme() {
 
 BottomNavigationBarThemeData bottomNavigationBarThemeData() {
   return BottomNavigationBarThemeData(
-    elevation: ProductConstants.zeroElevation,
+    elevation: BottomNavigationBarUtils.zeroElevation,
     type: BottomNavigationBarType.fixed,
     backgroundColor: ColorsScheme.bottomNavigationBarBackgrounColor,
     selectedItemColor: ColorsScheme.secondary,

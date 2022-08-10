@@ -14,3 +14,9 @@ extension ImagesAddPath on AssetImages {
     return Image.asset(addPath());
   }
 }
+
+enum AssetMusicPath { music }
+
+extension AssetMusicPathExtension on AssetMusicPath {
+  String get musicPath => 'assets/sounds/mutlu_ol_yeter.mp3';
+}

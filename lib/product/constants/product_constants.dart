@@ -1,13 +1,20 @@
-class ProductConstants {
-  static const String title = 'Spotify Clone';
-  static const String font = 'Gotham';
-  static const double zeroElevation = 0;
-  static const bool debugMode = false;
-  static const bool scfExtendBody = true;
-  static const String musicName = 'Mutlu Ol Yeter\n';
-  static const String artistName = 'İbrahim Tatlıses';
-  static const int lowFlex = 1;
-  static const int medFlex = 2;
-  static const int maxFlex = 3;
+abstract class ProductConstants {
+  final String title = 'Spotify Clone';
+  final String font = 'Gotham';
+  final bool extendBody = true;
+  final bool debugMode = false;
+}
+
+class BottomNavigationBarUtils {
+  final String musicName = 'Mutlu Ol Yeter\n';
+  final String artistName = 'İbrahim Tatlıses';
   static const double rotateValue = 25 / 360;
+  static const double zeroElevation = 0;
+}
+
+abstract class MusicPlayerVariables {
+  final double xAxis = 0;
+  final double yAxis = 0.86;
+  final double textHeight = 1.5;
+  final double letterSpacing = 0.7;
 }

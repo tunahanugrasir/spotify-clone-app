@@ -27,19 +27,19 @@ class GenreCards extends StatelessWidget {
 
   Expanded _imageArea(BuildContext context) {
     return Expanded(
-      flex: ProductConstants.medFlex,
+      flex: ExpandedUtils.mediumFlex,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         child: Row(
           children: [
             SingleChildScrollView(
-              padding: const PaddingConstants.genreImage(),
+              padding: const PaddingUtils.genreImage(),
               physics: const NeverScrollableScrollPhysics(),
               child: Column(
                 children: [
                   RotationTransition(
-                    turns: const AlwaysStoppedAnimation(ProductConstants.rotateValue),
+                    turns: const AlwaysStoppedAnimation(BottomNavigationBarUtils.rotateValue),
                     child: Image.network(
                       genreImageURL,
                       fit: BoxFit.cover,
@@ -57,11 +57,11 @@ class GenreCards extends StatelessWidget {
 
   Expanded _textArea() {
     return Expanded(
-      flex: ProductConstants.maxFlex,
+      flex: ExpandedUtils.highFlex,
       child: Column(
         children: [
           Padding(
-            padding: const PaddingConstants.normal(),
+            padding: const PaddingUtils.normal(),
             child: Text(
               genreName,
               style: ProductTheme.textTheme.headline6,

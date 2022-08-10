@@ -1,96 +1,86 @@
 part of '../../features/views/home_view.dart';
 
-abstract class ViewWidgets {
-  Widget progressIndicator();
-  Widget addTitle(BuildContext context, String title);
-  Widget header(BuildContext context, String title);
+Widget header(BuildContext context, String title) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      _headerTitle(title),
+      _headerIcons(context),
+    ],
+  );
 }
 
-mixin HomeViewWidgets implements ViewWidgets, ProductConstants {
-  @override
-  Center progressIndicator() {
-    return const Center(
-      child: CircularProgressIndicator(
-        color: ColorsScheme.secondary,
-      ),
-    );
-  }
-
-  @override
-  Widget addTitle(BuildContext context, String title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          flex: ProductConstants.medFlex,
-          child: Text(title, style: Theme.of(context).textTheme.headline5),
-        )
-      ],
-    );
-  }
-
-  @override
-  Widget header(BuildContext context, String title) {
-    const double iconSize = 28;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          flex: ProductConstants.medFlex,
-          child: Text(title, style: Theme.of(context).textTheme.headline5),
-        ),
-        Expanded(
-          flex: ProductConstants.lowFlex,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Stack(
-                children: [
-                  const Icon(Icons.notifications_none_outlined, size: iconSize),
-                  Positioned(
-                    left: 5,
-                    top: 6,
-                    child: Container(
-                      height: 7,
-                      width: 7,
-                      decoration: BoxDecoration(
-                        borderRadius: ProjectBorderRadiusUtils.circularMax(),
-                        color: ColorsScheme.gradient,
-                        border: Border.all(
-                          color: ColorsScheme.primary,
-                          width: 0.5,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              const Icon(Icons.history_outlined, size: iconSize),
-              const Icon(Icons.settings_outlined, size: iconSize),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+Expanded _headerTitle(String title) {
+  return Expanded(
+    flex: ExpandedUtils.mediumFlex,
+    child: Text(title, style: ProductTheme.textTheme.headline4),
+  );
 }
 
-class RecentlyPlayed extends StatelessWidget {
-  const RecentlyPlayed({
+Expanded _headerIcons(BuildContext context) {
+  return Expanded(
+    flex: ExpandedUtils.lowFlex,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _notificationIcon(context),
+        const Icon(Icons.history_outlined, size: IconUtils.iconSizeNormal),
+        const Icon(Icons.settings_outlined, size: IconUtils.iconSizeNormal),
+      ],
+    ),
+  );
+}
+
+Stack _notificationIcon(BuildContext context) {
+  return Stack(
+    children: [
+      const Icon(Icons.notifications_none_outlined, size: IconUtils.iconSizeNormal),
+      Positioned(
+        left: context.width / 70,
+        top: context.height / 120,
+        child: Container(
+          height: context.height / 120,
+          width: context.height / 120,
+          decoration: ProductTheme().headerBoxDecoration,
+        ),
+      )
+    ],
+  );
+}
+
+Widget centerProgressIndicator() {
+  return const Center(
+    child: CircularProgressIndicator(
+      color: ColorsScheme.secondary,
+    ),
+  );
+}
+
+Widget addTitle(String title) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 8.0),
+    child: Text(title, style: ProductTheme.textTheme.headline4),
+  );
+}
+
+class _RecentlyItems extends StatelessWidget {
+  final HomeViewModel homeViewModel;
+  const _RecentlyItems({
     Key? key,
+    required this.homeViewModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16),
+      padding: const EdgeInsets.only(top: 16),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.25,
         width: MediaQuery.of(context).size.width,
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 3.5,
+            childAspectRatio: 3,
             crossAxisSpacing: 7,
             mainAxisSpacing: 7,
           ),
@@ -98,6 +88,8 @@ class RecentlyPlayed extends StatelessWidget {
           itemCount: 6,
           padding: const EdgeInsets.all(0),
           itemBuilder: (context, index) {
+            RecentlyItemsModel recentlyModelItem = homeViewModel.recentlyModelItems[index];
+
             return Container(
               decoration: BoxDecoration(
                 color: const Color(0xff2e2c2c),
@@ -110,21 +102,29 @@ class RecentlyPlayed extends StatelessWidget {
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width * 0.15,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(5),
                           bottomLeft: Radius.circular(5),
                         ),
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                            "https://community.spotify.com/t5/image/serverpage/image-id/104727iC92B541DB372FBC7/image-size/large?v=v2&px=999",
+                            recentlyModelItem.url ?? '',
                           ),
                         ),
                       ),
                     ),
                   ),
-                  Text("Liked Songs", style: Theme.of(context).textTheme.subtitle2)
+                  SizedBox(
+                    width: 100,
+                    child: Text(
+                      recentlyModelItem.title ?? '',
+                      style: ProductTheme.textTheme.headline2,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
                 ],
               ),
             );
@@ -135,8 +135,9 @@ class RecentlyPlayed extends StatelessWidget {
   }
 }
 
-class RecentylPlayedReal extends StatelessWidget with HomeViewWidgets {
-  const RecentylPlayedReal({Key? key}) : super(key: key);
+class RecentlyPlayed extends StatelessWidget {
+  final HomeViewModel homeViewModel;
+  const RecentlyPlayed({Key? key, required this.homeViewModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +164,12 @@ class RecentylPlayedReal extends StatelessWidget with HomeViewWidgets {
           right: 8,
           bottom: 0,
           child: Column(
-            children: [header(context, TitlesAndSubtitles.goodEvening.getString()), const RecentlyPlayed()],
+            children: [
+              header(context, TitlesAndSubtitles.goodEvening.getString()),
+              _RecentlyItems(
+                homeViewModel: homeViewModel,
+              )
+            ],
           ),
         ),
       ],

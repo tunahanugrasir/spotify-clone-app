@@ -10,18 +10,18 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: ColorsScheme.transparent,
   ));
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget with ProductConstants {
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: ProductConstants.title,
-      theme: ThemeData(fontFamily: ProductConstants.font),
-      debugShowCheckedModeBanner: ProductConstants.debugMode,
+      title: title,
+      theme: ThemeData(fontFamily: font),
+      debugShowCheckedModeBanner: debugMode,
       themeMode: ThemeMode.dark,
       darkTheme: darkTheme(),
       home: const BaseView(),

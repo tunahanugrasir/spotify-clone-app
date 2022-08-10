@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:spotify_clone_app/product/theme/product_theme.dart';
 
 class LibraryView extends StatefulWidget {
   const LibraryView({Key? key}) : super(key: key);
@@ -15,97 +16,8 @@ class _LibraryViewState extends State<LibraryView> {
         body: NestedScrollView(
             headerSliverBuilder: ((context, innerBoxIsScrolled) {
               return [
-                SliverAppBar(
-                  backgroundColor: Colors.black,
-                  pinned: true,
-                  leading: const Padding(
-                    padding: EdgeInsets.only(left: 16.0),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        "https://avatars.githubusercontent.com/u/58215634?v=4",
-                      ),
-                    ),
-                  ),
-                  title: const Text("Your Library"),
-                  centerTitle: false,
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(right: 8.0),
-                            child: Icon(Icons.search),
-                          ),
-                          Icon(Icons.add)
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SliverAppBar(
-                  backgroundColor: Colors.black,
-                  collapsedHeight: 0,
-                  toolbarHeight: 0,
-                  pinned: false,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Container(
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.white70, width: 1),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  "Playlists",
-                                  style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Container(
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.white70, width: 1),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  "Albums",
-                                  style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.white70, width: 1),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                "Podcast & Shows",
-                                style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                _searchTitleAndCameraIcon(),
+                _pinnedSearchBox(),
               ];
             }),
             body: ListView(padding: EdgeInsets.zero, physics: const BouncingScrollPhysics(), children: [
@@ -189,5 +101,102 @@ class _LibraryViewState extends State<LibraryView> {
                     })),
               ),
             ])));
+  }
+
+  SliverAppBar _pinnedSearchBox() {
+    return SliverAppBar(
+      backgroundColor: Colors.black,
+      collapsedHeight: 0,
+      toolbarHeight: 0,
+      pinned: false,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Container(
+                  width: 90,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white70, width: 1),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Playlists",
+                      style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Container(
+                  width: 90,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white70, width: 1),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Albums",
+                      style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: Colors.white70, width: 1),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Podcast & Shows",
+                    style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SliverAppBar _searchTitleAndCameraIcon() {
+    return SliverAppBar(
+      backgroundColor: ColorsScheme.primary,
+      pinned: true,
+      leading: const Padding(
+        padding: EdgeInsets.only(left: 16.0),
+        child: CircleAvatar(
+          backgroundImage: NetworkImage(
+            "https://avatars.githubusercontent.com/u/58215634?v=4",
+          ),
+        ),
+      ),
+      title: const Text("Your Library"),
+      centerTitle: false,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: Row(
+            children: const [
+              Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Icon(Icons.search),
+              ),
+              Icon(Icons.add)
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

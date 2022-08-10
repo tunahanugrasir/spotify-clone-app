@@ -41,6 +41,38 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  late final _$recentlyModelItemsAtom =
+      Atom(name: '_HomeViewModelBase.recentlyModelItems', context: context);
+
+  @override
+  List<RecentlyItemsModel> get recentlyModelItems {
+    _$recentlyModelItemsAtom.reportRead();
+    return super.recentlyModelItems;
+  }
+
+  @override
+  set recentlyModelItems(List<RecentlyItemsModel> value) {
+    _$recentlyModelItemsAtom.reportWrite(value, super.recentlyModelItems, () {
+      super.recentlyModelItems = value;
+    });
+  }
+
+  late final _$searchItemsAtom =
+      Atom(name: '_HomeViewModelBase.searchItems', context: context);
+
+  @override
+  List<SearchModel> get searchItems {
+    _$searchItemsAtom.reportRead();
+    return super.searchItems;
+  }
+
+  @override
+  set searchItems(List<SearchModel> value) {
+    _$searchItemsAtom.reportWrite(value, super.searchItems, () {
+      super.searchItems = value;
+    });
+  }
+
   late final _$isLoadingAtom =
       Atom(name: '_HomeViewModelBase.isLoading', context: context);
 
@@ -84,6 +116,8 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     return '''
 albumModelItems: ${albumModelItems},
 podcastModelItems: ${podcastModelItems},
+recentlyModelItems: ${recentlyModelItems},
+searchItems: ${searchItems},
 isLoading: ${isLoading}
     ''';
   }
