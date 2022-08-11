@@ -1,18 +1,21 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
-
 part 'search_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class SearchModel extends INetworkModel {
+class SearchModel extends INetworkModel<SearchModel> {
   String? title;
   String? imageURL;
   int? backgroundColor;
 
   SearchModel({this.title, this.imageURL, this.backgroundColor});
 
+  factory SearchModel.fromJson(Map<String, dynamic> json) {
+    return _$SearchModelFromJson(json);
+  }
+
   @override
-  fromJson(Map<String, dynamic> json) {
+  SearchModel fromJson(Map<String, dynamic> json) {
     return _$SearchModelFromJson(json);
   }
 

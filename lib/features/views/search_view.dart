@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:kartal/kartal.dart';
+import 'package:spotify_clone_app/features/view_model/searc_view_model.dart';
+import 'package:spotify_clone_app/features/views/home_view.dart';
+import 'package:spotify_clone_app/product/product_index.dart';
 
-import '../../product/init/network/network_product.dart';
-import '../../product/theme/product_theme.dart';
 import '../../service/spotify_service.dart';
-import '../view_model/home_view_model.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -13,114 +15,78 @@ class SearchView extends StatefulWidget {
 }
 
 class _SearchViewState extends State<SearchView> {
-  late final HomeViewModel _homeViewModel;
+  late final SearchViewModel _searchViewModel;
 
   @override
-  void initState() {
-    super.initState();
-    _homeViewModel = HomeViewModel(SpotifyService(NetworkProduct.instance.networkManager));
-    _homeViewModel.fetchAllDatas();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _fetchAllData();
+  }
+
+  void _fetchAllData() {
+    _searchViewModel = SearchViewModel(SpotifyService(NetworkProduct.instance.networkManager));
+    _searchViewModel.fetchAllTypes();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: MyCustomNestedScrollWidget(homeViewModel: _homeViewModel));
+    return Scaffold(body: Observer(
+      builder: (_) {
+        return _searchViewModel.isLoading
+            ? centerProgressIndicator()
+            : MyCustomNestedScrollWidget(searchViewModel: _searchViewModel);
+      },
+    ));
   }
 }
 
 class MyCustomNestedScrollWidget extends StatelessWidget {
-  final HomeViewModel homeViewModel;
+  final SearchViewModel searchViewModel;
+
   const MyCustomNestedScrollWidget({
     Key? key,
-    required this.homeViewModel,
+    required this.searchViewModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: NestedScrollView(
         physics: const BouncingScrollPhysics(),
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             _sliverAppBar(),
             _sliverSearchBar(),
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-              childCount: 10,
-              (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    color: Colors.amber.shade900,
-                    height: 100,
-                    width: 100,
-                    child: Center(
-                        child: Text(
-                      "$index",
-                      style: const TextStyle(fontSize: 50, color: Colors.black),
-                    )),
-                  ),
-                );
-              },
-            ))
+            _title(),
+            SliverGridFirstItems(searchViewModel: searchViewModel),
+            _subtitle(),
+            SliverGridAllItems(searchViewModel: searchViewModel),
+            SliverGridAllItems(searchViewModel: searchViewModel),
+            SliverGridAllItems(searchViewModel: searchViewModel),
           ];
         },
-        body: ListView.builder(itemBuilder: ((context, index) {
-          return Container();
-        }))
-        // body: ListView(
-        //     physics: const BouncingScrollPhysics(),
-        //     padding: const EdgeInsets.symmetric(horizontal: 8),
-        //     children: [
-        //       Padding(
-        //         padding: const EdgeInsets.symmetric(vertical: 24.0),
-        //         child: Text(
-        //           'Your top genres',
-        //           style: ProductTheme.textTheme.subtitle1,
-        //         ),
-        //       ),
-        //       SizedBox(
-        //         height: 225,
-        //         width: MediaQuery.of(context).size.width,
-        //         child: GridView.builder(
-        //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //             crossAxisCount: 2,
-        //             childAspectRatio: context.width / (0.3 * context.height),
-        //             crossAxisSpacing: 7,
-        //             mainAxisSpacing: 7,
-        //           ),
-        //           physics: const NeverScrollableScrollPhysics(),
-        //           itemCount: 4,
-        //           padding: const EdgeInsets.all(0),
-        //           itemBuilder: (context, index) {
-        //             return const GenreCards(
-        //               backgroundColor: Color(0xff1DB954),
-        //               genreImageURL:
-        //                   "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
-        //               genreName: 'Hip-Hop',
-        //             );
-        //           },
-        //         ),
-        //       ),
-        //       Padding(
-        //         padding: const EdgeInsets.only(top: 24.0),
-        //         child: Text(
-        //           'Browse all',
-        //           style: ProductTheme.textTheme.subtitle1,
-        //         ),
-        //       ),
-        //       GridView.builder(
-        //           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        //           scrollDirection: Axis.vertical,
-        //           physics: const BouncingScrollPhysics(),
-        //           itemBuilder: (context, index) {
-        //             SearchModel searchItem = homeViewModel.searchItems[index];
-        //             return GenreCards(
-        //                 genreName: searchItem.title ?? '',
-        //                 genreImageURL: searchItem.imageURL ?? '',
-        //                 backgroundColor: Color(searchItem.backgroundColor ?? 000000));
-        //           }),
-        //     ]),
-        );
+        body: const SizedBox(),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _subtitle() {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24.0),
+        child: Text("Browse all", style: ProductTheme.textTheme.subtitle1),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _title() {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24.0),
+        child: Text("Your top genres", style: ProductTheme.textTheme.subtitle1),
+      ),
+    );
   }
 
   SliverAppBar _sliverSearchBar() {
@@ -131,7 +97,7 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
       backgroundColor: ColorsScheme.primary,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: EdgeInsets.only(left: 8.0, right: 8, top: 16),
+          padding: EdgeInsets.only(top: 16),
           child: TextField(
             cursorColor: Colors.black,
             decoration: InputDecoration(
@@ -173,6 +139,69 @@ class MyCustomNestedScrollWidget extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class SliverGridAllItems extends StatelessWidget {
+  const SliverGridAllItems({
+    Key? key,
+    required this.searchViewModel,
+  }) : super(key: key);
+
+  final SearchViewModel searchViewModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: context.width / (0.3 * context.height),
+        crossAxisSpacing: 7,
+        mainAxisSpacing: 7,
+      ),
+      delegate: SliverChildBuilderDelegate(childCount: searchViewModel.typeItems.length - 4, (context, index) {
+        index += 4;
+        return GenreCards(
+            genreName: searchViewModel.typeItems[index].title ?? '',
+            genreImageURL: searchViewModel.typeItems[index].imageURL ?? '',
+            backgroundColor: Color.fromARGB(
+                255,
+                searchViewModel.typeItems[index].backgroundColor![0],
+                searchViewModel.typeItems[index].backgroundColor![1],
+                searchViewModel.typeItems[index].backgroundColor![2]));
+      }),
+    );
+  }
+}
+
+class SliverGridFirstItems extends StatelessWidget {
+  const SliverGridFirstItems({
+    Key? key,
+    required this.searchViewModel,
+  }) : super(key: key);
+
+  final SearchViewModel searchViewModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: context.width / (0.3 * context.height),
+        crossAxisSpacing: 7,
+        mainAxisSpacing: 7,
+      ),
+      delegate: SliverChildBuilderDelegate(childCount: searchViewModel.typeItems.length - 10, (context, index) {
+        return GenreCards(
+            genreName: searchViewModel.typeItems[index].title ?? '',
+            genreImageURL: searchViewModel.typeItems[index].imageURL ?? '',
+            backgroundColor: Color.fromARGB(
+                255,
+                searchViewModel.typeItems[index].backgroundColor![0],
+                searchViewModel.typeItems[index].backgroundColor![1],
+                searchViewModel.typeItems[index].backgroundColor![2]));
+      }),
     );
   }
 }

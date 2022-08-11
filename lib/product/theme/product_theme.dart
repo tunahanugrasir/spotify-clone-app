@@ -29,7 +29,7 @@ class ProductTheme {
     subtitle2: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
     bodyText1: TextStyle(fontSize: 12),
     bodyText2: TextStyle(fontSize: 12, color: ColorsScheme.grey),
-    labelMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: ColorsScheme.primary),
+    labelMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: ColorsScheme.primary),
   );
 
   static const baseBottomBoxDecoration = BoxDecoration(

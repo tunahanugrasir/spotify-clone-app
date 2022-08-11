@@ -1,6 +1,6 @@
 import 'package:spotify_clone_app/models/album_model.dart';
 import 'package:spotify_clone_app/models/recently_items_model.dart';
-import 'package:spotify_clone_app/models/search_model.dart';
+import 'package:spotify_clone_app/models/types_model.dart';
 import 'package:vexana/vexana.dart';
 import '../models/podcast_model.dart';
 
@@ -12,7 +12,7 @@ abstract class ISpotifyService {
   Future<List<AlbumModel>?> fetchSpotifyAlbumDatas();
   Future<List<PodcastModel>?> fetchSpotifyPodcastDatas();
   Future<List<RecentlyItemsModel>?> fetchSpotifyRecentlDatas();
-  Future<List<SearchModel>?> fetchSpotifySearchDatas();
+  Future<List<TypeModel>?> fetchSpotifyTypesDatas();
 }
 
 class SpotifyService extends ISpotifyService {
@@ -42,14 +42,14 @@ class SpotifyService extends ISpotifyService {
   }
 
   @override
-  Future<List<SearchModel>?> fetchSpotifySearchDatas() async {
-    final response = await networkManager.send<SearchModel, List<SearchModel>>(ServicePaths.search.path,
-        parseModel: SearchModel(), method: RequestType.GET);
+  Future<List<TypeModel>?> fetchSpotifyTypesDatas() async {
+    final response = await networkManager.send<TypeModel, List<TypeModel>>(ServicePaths.types.path,
+        parseModel: TypeModel(), method: RequestType.GET);
     return response.data;
   }
 }
 
-enum ServicePaths { albums, podcasts, recentlySongs, search }
+enum ServicePaths { albums, podcasts, recentlySongs, types }
 
 extension ServicePathsExtension on ServicePaths {
   String get path => name;

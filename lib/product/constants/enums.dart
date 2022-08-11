@@ -18,12 +18,23 @@ extension SpotifTextsExtension on BottomNavBar {
     }
   }
 
-  IconData getIcon() {
+  IconData getActiveIcon() {
     switch (this) {
       case BottomNavBar.home:
         return Icons.home;
       case BottomNavBar.search:
         return Icons.search;
+      case BottomNavBar.yourLibrary:
+        return Icons.library_books;
+    }
+  }
+
+  IconData getInactiveIcon() {
+    switch (this) {
+      case BottomNavBar.home:
+        return Icons.home_outlined;
+      case BottomNavBar.search:
+        return Icons.search_outlined;
       case BottomNavBar.yourLibrary:
         return Icons.library_books_outlined;
     }
