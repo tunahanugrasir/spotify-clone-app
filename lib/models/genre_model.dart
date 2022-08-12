@@ -1,18 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
 
-part "types_model.g.dart";
+part "genre_model.g.dart";
 
 @JsonSerializable(createToJson: false)
-class TypeModel extends INetworkModel {
+class GenreModel extends INetworkModel {
   String? title;
   String? imageURL;
   List<int>? backgroundColor;
 
-  TypeModel({this.title, this.imageURL, this.backgroundColor});
+  GenreModel({this.title, this.imageURL, this.backgroundColor});
 
-  factory TypeModel.fromJson(Map<String, dynamic> json) {
-    return _$TypeModelFromJson(json);
+  factory GenreModel.fromJson(Map<String, dynamic> json) {
+    return _$GenreModelFromJson(json);
   }
 
   @override
@@ -22,6 +22,6 @@ class TypeModel extends INetworkModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
-    return _$TypeModelFromJson(json);
+    return _$GenreModelFromJson(json);
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../utilities/project_utils.dart';
-import '../constants/product_constants.dart';
 
 class ColorsScheme {
   static const Color primary = Colors.black;
@@ -56,6 +55,24 @@ class ProductTheme {
     border: Border.all(
       color: ColorsScheme.primary,
       width: 0.5,
+    ),
+  );
+
+  final recentlyItemBoxDecoration = BoxDecoration(
+    color: const Color(0xff2e2c2c),
+    borderRadius: BorderRadius.circular(5),
+  );
+
+  final homeViewStackBoxDecoration = BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      stops: const [0, 0.4],
+      tileMode: TileMode.repeated,
+      colors: [
+        ColorsScheme.gradient,
+        Colors.black.withOpacity(0.6),
+      ],
     ),
   );
 }

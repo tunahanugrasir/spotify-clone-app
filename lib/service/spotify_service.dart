@@ -1,8 +1,10 @@
-import 'package:spotify_clone_app/models/album_model.dart';
-import 'package:spotify_clone_app/models/recently_items_model.dart';
-import 'package:spotify_clone_app/models/types_model.dart';
 import 'package:vexana/vexana.dart';
+
+import '../models/album_model.dart';
+import '../models/genre_model.dart';
+import '../models/library_model.dart';
 import '../models/podcast_model.dart';
+import '../models/recently_items_model.dart';
 
 abstract class ISpotifyService {
   final INetworkManager networkManager;
@@ -12,7 +14,8 @@ abstract class ISpotifyService {
   Future<List<AlbumModel>?> fetchSpotifyAlbumDatas();
   Future<List<PodcastModel>?> fetchSpotifyPodcastDatas();
   Future<List<RecentlyItemsModel>?> fetchSpotifyRecentlDatas();
-  Future<List<TypeModel>?> fetchSpotifyTypesDatas();
+  Future<List<GenreModel>?> fetchSpotifyTypesDatas();
+  Future<List<LibraryModel>?> fetchSpotifyLibraryDatas();
 }
 
 class SpotifyService extends ISpotifyService {
@@ -42,14 +45,21 @@ class SpotifyService extends ISpotifyService {
   }
 
   @override
-  Future<List<TypeModel>?> fetchSpotifyTypesDatas() async {
-    final response = await networkManager.send<TypeModel, List<TypeModel>>(ServicePaths.types.path,
-        parseModel: TypeModel(), method: RequestType.GET);
+  Future<List<GenreModel>?> fetchSpotifyTypesDatas() async {
+    final response = await networkManager.send<GenreModel, List<GenreModel>>(ServicePaths.types.path,
+        parseModel: GenreModel(), method: RequestType.GET);
+    return response.data;
+  }
+
+  @override
+  Future<List<LibraryModel>?> fetchSpotifyLibraryDatas() async {
+    final response = await networkManager.send<LibraryModel, List<LibraryModel>>(ServicePaths.library.path,
+        parseModel: LibraryModel(), method: RequestType.GET);
     return response.data;
   }
 }
 
-enum ServicePaths { albums, podcasts, recentlySongs, types }
+enum ServicePaths { albums, podcasts, recentlySongs, types, library }
 
 extension ServicePathsExtension on ServicePaths {
   String get path => name;

@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_model.dart';
+part of 'library_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-SearchModel _$SearchModelFromJson(Map<String, dynamic> json) => SearchModel(
+LibraryModel _$LibraryModelFromJson(Map<String, dynamic> json) => LibraryModel(
       title: json['title'] as String?,
-      imageURL: json['imageURL'] as String?,
-      backgroundColor: json['backgroundColor'] as int?,
+      subtitle: json['subtitle'] as String?,
+      pinned: json['pinned'] as bool?,
+      image: json['image'] as String?,
     );

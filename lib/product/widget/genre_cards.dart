@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../utilities/project_utils.dart';
-import '../constants/product_constants.dart';
 import '../theme/product_theme.dart';
 
 class GenreCards extends StatelessWidget {
@@ -59,6 +58,7 @@ class GenreCards extends StatelessWidget {
     return Expanded(
       flex: ExpandedUtils.highFlex,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const PaddingUtils.normal(),

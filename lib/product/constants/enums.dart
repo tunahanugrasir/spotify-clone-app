@@ -94,3 +94,18 @@ extension TitlesAndSubtitlesExtension on TitlesAndSubtitles {
     }
   }
 }
+
+enum LibraryCategories { playlists, albums, podcastAndShows }
+
+extension LibraryCategoriesExtension on LibraryCategories {
+  getNames() {
+    switch (this) {
+      case LibraryCategories.playlists:
+        return "Playlists";
+      case LibraryCategories.albums:
+        return "Albums";
+      case LibraryCategories.podcastAndShows:
+        return "Podcast & Shows";
+    }
+  }
+}

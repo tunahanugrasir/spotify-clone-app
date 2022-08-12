@@ -54,5 +54,215 @@
             "url": "https://open.spotify.com/show/2eZOTKreT10INezwYUN959?si=80a2f155dbbd472b",
             "thumbnailUrl": "https://i.scdn.co/image/ab6765630000ba8ac35d396116be3f60c632e493"
         }
+    ],
+    "recentlySongs": [
+        {
+            "title": "Liked Songs",
+            "url": "https://community.spotify.com/t5/image/serverpage/image-id/104727iC92B541DB372FBC7/image-size/large?v=v2&px=999"
+        },
+        {
+            "title": "Top 50 - Global",
+            "url": "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_global_large.jpg"
+        },
+        {
+            "title": "Top Songs - Turkey",
+            "url": "https://i1.sndcdn.com/artworks-35F46y31lE0fmqSU-8Rj90A-t500x500.jpg"
+        },
+        {
+            "title": "Bir garip VB hikayesi",
+            "url": "https://a.ltrbxd.com/resized/sm/upload/0q/uw/ja/m2/good-will-hunting-1200-1200-675-675-crop-000000.jpg?k=8e5013e14b"
+        },
+        {
+            "title": "Dua Lipa Radio",
+            "url": "https://seeded-session-images.scdn.co/v1/img/artist/6M2wZ9GZgrQXHCFfjv46we/en"
+        },
+        {
+            "title": "The Search Radio",
+            "url": "https://seeded-session-images.scdn.co/v1/img/track/2OKo7g3KfmCt3kyLvUAL0g/en"
+        }
+    ],
+    "types": [
+        {
+            "title": "Hip-Hop",
+            "imageURL": "https://dstudiosmedia.com/wp-content/uploads/2021/08/top-10-most-followed-playlists-for-hip-hop-rap-music-on-spotify-1.jpg",
+            "backgroundColor": [
+                185,
+                93,
+                6
+            ]
+        },
+        {
+            "title": "Pop",
+            "imageURL": "https://images.genius.com/9981be1fb5fa67fb8ba50d3f54b7b73e.640x640x1.jpg",
+            "backgroundColor": [
+                140,
+                103,
+                172
+            ]
+        },
+        {
+            "title": "Dance/Electronic",
+            "imageURL": "https://seed-mix-image.spotifycdn.com/v6/img/dance_electronic/5ENS85nZShljwNgg4wFD7D/en/large",
+            "backgroundColor": [
+                219,
+                20,
+                139
+            ]
+        },
+        {
+            "title": "Rock",
+            "imageURL": "https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg",
+            "backgroundColor": [
+                229,
+                30,
+                49
+            ]
+        },
+        {
+            "title": "Podcasts",
+            "imageURL": "https://i.scdn.co/image/ab6765630000ba8a80999d03dcb6a2eefc753090",
+            "backgroundColor": [
+                225,
+                51,
+                0
+            ]
+        },
+        {
+            "title": "Made for you",
+            "imageURL": "https://assets.teenvogue.com/photos/5ffdcd5df0cd9c0861304c14/3:2/w_1200,h_800,c_limit/olivia.jpg",
+            "backgroundColor": [
+                30,
+                50,
+                100
+            ]
+        },
+        {
+            "title": "Charts",
+            "imageURL": "https://charts-images.scdn.co/assets/locale_en/regional/weekly/region_global_large.jpg",
+            "backgroundColor": [
+                140,
+                103,
+                172
+            ]
+        },
+        {
+            "title": "New Releases",
+            "imageURL": "https://i.scdn.co/image/ab67706f00000003682ffce435b33de3ea88b93c",
+            "backgroundColor": [
+                232,
+                17,
+                92
+            ]
+        },
+        {
+            "title": "Radio",
+            "imageURL": "https://seeded-session-images.scdn.co/v1/img/artist/3uCSQ7SFeo7J3CkRCMsE7P/en",
+            "backgroundColor": [
+                176,
+                40,
+                150
+            ]
+        },
+        {
+            "title": "Discover",
+            "imageURL": "https://newjams-images.scdn.co/image/ab676477000033ad/dt/v3/discover-weekly/Ddc2EiVhrzWLaWfNKU9uZGzwu4Bvajqws5q2HCrXcDNSp5maItyFn7EydDWgieCHsXjBmRSvQARLYgAGEw2C7qQYIGxQeRVW7UErKRIMpAlP1oCxexlZrV3h68DpiGqnzJn3FBpNAsimcgI2Ju3M5BZr4wdXZbsuso-xxtj5AEHld0U5DbgnA6a47DHQnH-OpGFFNZgv0FcjhfD-to3d8w==/ODE6ODM6MTJUOTEtNTAtMg==",
+            "backgroundColor": [
+                140,
+                103,
+                172
+            ]
+        },
+        {
+            "title": "Live Events",
+            "imageURL": "https://seed-mix-image.spotifycdn.com/v6/img/artist/5MJ5f1XKD9yu7aWfG8OGjz/en/large",
+            "backgroundColor": [
+                30,
+                50,
+                100
+            ]
+        },
+        {
+            "title": "Summer",
+            "imageURL": "https://i.scdn.co/image/ab67706c0000bebb35dce95494b2e220f3db0401",
+            "backgroundColor": [
+                40,
+                40,
+                40
+            ]
+        },
+        {
+            "title": "Trending",
+            "imageURL": "https://i.scdn.co/image/ab67706f00000003fe9dc05d01471e1917d46c6b",
+            "backgroundColor": [
+                232,
+                17,
+                92
+            ]
+        },
+        {
+            "title": "Mood",
+            "imageURL": "https://i.pinimg.com/736x/c8/b6/b0/c8b6b034e418ac893c6abc0ba5403bb7.jpg",
+            "backgroundColor": [
+                140,
+                103,
+                172
+            ]
+        }
+    ],
+    "library": [
+        {
+            "title": "Liked Songs",
+            "subtitle": "Playlist • 637 songs",
+            "pinned": true,
+            "image": "https://community.spotify.com/t5/image/serverpage/image-id/104727iC92B541DB372FBC7/image-size/large?v=v2&px=999"
+        },
+        {
+            "title": "New Episodes",
+            "subtitle": "Updated 29 Jul 2022",
+            "pinned": true,
+            "image": "https://i.scdn.co/image/ab67706f0000000306544c94b4cf81dc0e86eb4c"
+        },
+        {
+            "title": "Your Episodes",
+            "subtitle": "Saved & downloaded episodes",
+            "pinned": true,
+            "image": "https://piunikaweb.com/wp-content/uploads/2022/05/podcasts-not-working-playing-apple-music-spotify-google-podcasts-featured.jpg"
+        },
+        {
+            "title": "Top 50 - Global",
+            "subtitle": "Playlist • Spotify",
+            "pinned": false,
+            "image": "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_global_large.jpg"
+        },
+        {
+            "title": "Bir garip VB hikayesi",
+            "subtitle": "Podcast • Veli Bacik",
+            "pinned": false,
+            "image": "https://a.ltrbxd.com/resized/sm/upload/0q/uw/ja/m2/good-will-hunting-1200-1200-675-675-crop-000000.jpg?k=8e5013e14b"
+        },
+        {
+            "title": "My Shazam Tracks",
+            "subtitle": "Playlist • Tunahan Uğraşır",
+            "pinned": false,
+            "image": "https://i.scdn.co/image/ab67616d0000b273ca2ed6a8492cb21deb45732b"
+        },
+        {
+            "title": "Hot Hits Türkiye",
+            "subtitle": "Playlist • Spotify",
+            "pinned": false,
+            "image": "https://1.bp.blogspot.com/-Grpc-OZslHs/YNorRpZEnCI/AAAAAAAAA-c/yy5RF5DXg5oMsIvABAHoHFuLWQhzdmNywCLcBGAsYHQ/s604/HOT_HITS_TURKIYE.jpg"
+        },
+        {
+            "title": "Beast Mode",
+            "subtitle": "Playlist • Spotify",
+            "pinned": false,
+            "image": "https://i.scdn.co/image/ab67706f000000039249b35f23fb596b6f006a15"
+        },
+        {
+            "title": "Evde Spor",
+            "subtitle": "Playlist • Spotify",
+            "pinned": false,
+            "image": "https://i.scdn.co/image/ab67706f00000003c357b8c50095c4d094cfb64e"
+        }
     ]
 }

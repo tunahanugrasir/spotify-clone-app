@@ -48,17 +48,9 @@ Stack _notificationIcon(BuildContext context) {
   );
 }
 
-Widget centerProgressIndicator() {
-  return const Center(
-    child: CircularProgressIndicator(
-      color: ColorsScheme.secondary,
-    ),
-  );
-}
-
 Widget addTitle(String title) {
   return Padding(
-    padding: const EdgeInsets.only(left: 8.0),
+    padding: const PaddingUtils.onlyLeftEight(),
     child: Text(title, style: ProductTheme.textTheme.headline4),
   );
 }
@@ -73,7 +65,7 @@ class _RecentlyItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16),
+      padding: const PaddingUtils.onlyTop(),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.25,
         width: MediaQuery.of(context).size.width,
@@ -85,51 +77,62 @@ class _RecentlyItems extends StatelessWidget {
             mainAxisSpacing: 7,
           ),
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: 6,
-          padding: const EdgeInsets.all(0),
+          itemCount: homeViewModel.recentlyModelItems.length,
+          padding: const PaddingUtils.zero(),
           itemBuilder: (context, index) {
             RecentlyItemsModel recentlyModelItem = homeViewModel.recentlyModelItems[index];
-
-            return Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff2e2c2c),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width * 0.15,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(5),
-                          bottomLeft: Radius.circular(5),
-                        ),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            recentlyModelItem.url ?? '',
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    child: Text(
-                      recentlyModelItem.title ?? '',
-                      style: ProductTheme.textTheme.headline2,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  )
-                ],
-              ),
-            );
+            return RecentlyItem(recentlyModelItem: recentlyModelItem);
           },
         ),
+      ),
+    );
+  }
+}
+
+class RecentlyItem extends StatelessWidget {
+  const RecentlyItem({
+    Key? key,
+    required this.recentlyModelItem,
+  }) : super(key: key);
+  final int _maxLines = 2;
+
+  final RecentlyItemsModel recentlyModelItem;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: ProductTheme().recentlyItemBoxDecoration,
+      child: Row(
+        children: [
+          Padding(
+            padding: const PaddingUtils.onlyRight(),
+            child: Container(
+              height: context.height,
+              width: context.width * 0.15,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  bottomLeft: Radius.circular(5),
+                ),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    recentlyModelItem.url ?? '',
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: context.width / 4,
+            child: Text(
+              recentlyModelItem.title ?? '',
+              style: ProductTheme.textTheme.headline2,
+              maxLines: _maxLines,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
       ),
     );
   }
@@ -145,18 +148,7 @@ class RecentlyPlayed extends StatelessWidget {
       children: [
         Container(
           height: context.height * 0.40,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              stops: const [0, 0.4],
-              tileMode: TileMode.repeated,
-              colors: [
-                ColorsScheme.gradient,
-                Colors.black.withOpacity(0.6),
-              ],
-            ),
-          ),
+          decoration: ProductTheme().homeViewStackBoxDecoration,
         ),
         Positioned(
           top: 50,

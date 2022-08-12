@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 
-import '../../features/features_index.dart';
-import '../product_index.dart';
 import '../../core/models/bottom_navigation_model.dart';
+import '../../features/navigations/bottom_sheet_view.dart';
+import '../../features/view_model/base_view_model.dart';
 import '../../utilities/extensions/enum_extension.dart';
+import '../../utilities/project_utils.dart';
+import '../theme/product_theme.dart';
 import 'bottom_navigation_music_player_part.dart';
 
 class BottomNavigationAndMusicPlayer extends StatelessWidget {
@@ -61,7 +63,7 @@ class _MusicPlayerState extends State<MusicPlayer> with MusicPlayerVariables {
     return Align(
       alignment: Alignment(xAxis, yAxis),
       child: Padding(
-        padding: const PaddingUtils.horizontalSymmetricTree(),
+        padding: const PaddingUtils.horizontalSymmetric(),
         child: Container(
           height: context.height * 0.07,
           decoration: ProductTheme().musicPlayerBoxDecoration,
@@ -165,7 +167,7 @@ class _PlayAndPauseIconState extends IPlayAndPauseIcon {
           icon: AnimatedIcon(
             progress: animationController,
             icon: AnimatedIcons.play_pause,
-            size: IconUtils.bottomBarIconSize,
+            size: IconUtils.iconSizeNormal,
           )),
     );
   }

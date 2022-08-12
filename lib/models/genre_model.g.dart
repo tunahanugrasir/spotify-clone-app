@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'types_model.dart';
+part of 'genre_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TypeModel _$TypeModelFromJson(Map<String, dynamic> json) => TypeModel(
+GenreModel _$GenreModelFromJson(Map<String, dynamic> json) => GenreModel(
       title: json['title'] as String?,
       imageURL: json['imageURL'] as String?,
       backgroundColor: (json['backgroundColor'] as List<dynamic>?)

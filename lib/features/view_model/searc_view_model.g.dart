@@ -13,13 +13,13 @@ mixin _$SearchViewModel on _SearchViewModelBase, Store {
       Atom(name: '_SearchViewModelBase.typeItems', context: context);
 
   @override
-  List<TypeModel> get typeItems {
+  List<GenreModel> get typeItems {
     _$typeItemsAtom.reportRead();
     return super.typeItems;
   }
 
   @override
-  set typeItems(List<TypeModel> value) {
+  set typeItems(List<GenreModel> value) {
     _$typeItemsAtom.reportWrite(value, super.typeItems, () {
       super.typeItems = value;
     });

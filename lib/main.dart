@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'features/navigations/base_view.dart';
-import 'product/constants/product_constants.dart';
+import 'product/constants/product_setup.dart';
 import 'product/theme/product_theme.dart';
 
 void main() {
@@ -13,7 +13,7 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget with ProductConstants {
+class MyApp extends StatelessWidget with ProductSetup {
   MyApp({Key? key}) : super(key: key);
 
   @override
