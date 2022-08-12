@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_clone_app/utilities/project_utils.dart';
 
 import '../../product/theme/product_theme.dart';
+import '../../utilities/extensions/enum_extension.dart';
 
 abstract class SearchViewWidget {
   SliverAppBar sliverSearchBar() {
-    return const SliverAppBar(
+    var enabled2 = false;
+    return SliverAppBar(
       pinned: true,
       expandedHeight: 0,
       toolbarHeight: 0,
       backgroundColor: ColorsScheme.primary,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: EdgeInsets.only(top: 16),
+          padding: const PaddingUtils.onlyTop(),
           child: TextField(
-            cursorColor: Colors.black,
+            cursorColor: ColorsScheme.primary,
             decoration: InputDecoration(
-              enabled: false,
-              prefixIcon: Icon(
+              enabled: enabled2,
+              prefixIcon: const Icon(
                 Icons.search_outlined,
-                size: 31,
+                size: IconUtils.iconSizeBig,
               ),
-              hintText: 'Artists, songs, or podcasts',
+              hintText: SearchViewTexts.hintText.getText(),
             ),
           ),
         ),
@@ -37,17 +40,17 @@ abstract class SearchViewWidget {
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
         title: Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8, top: 0, bottom: 0),
+          padding: const PaddingUtils.songs(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Search",
+                SearchViewTexts.search.getText(),
                 style: ProductTheme.textTheme.headline5,
               ),
               const Icon(
                 Icons.camera_alt_outlined,
-                size: 31,
+                size: IconUtils.iconSizeBig,
               )
             ],
           ),
@@ -64,8 +67,11 @@ class SliverSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0),
-        child: Text("Browse all", style: ProductTheme.textTheme.subtitle1),
+        padding: const PaddingUtils.searchViewSymmetric(),
+        child: Text(
+          SearchViewTexts.browse.getText(),
+          style: ProductTheme.textTheme.subtitle1,
+        ),
       ),
     );
   }
@@ -78,8 +84,11 @@ class SliverTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0),
-        child: Text("Your top genres", style: ProductTheme.textTheme.subtitle1),
+        padding: const PaddingUtils.searchViewSymmetric(),
+        child: Text(
+          SearchViewTexts.genres.getText(),
+          style: ProductTheme.textTheme.subtitle1,
+        ),
       ),
     );
   }

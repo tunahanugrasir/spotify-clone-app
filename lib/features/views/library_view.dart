@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:kartal/kartal.dart';
 
 import '../../core/widgets/library_view.widgets.dart';
 import '../../product/init/network/network_product.dart';
@@ -33,87 +32,39 @@ class LibraryNestedScrollView extends StatelessWidget {
         return [
           HeaderAndIcons(),
           const SliverCategories(),
-          SliverOverlapAbsorber(
-            handle: SliverOverlapAbsorberHandle(),
-            sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-              childCount: libraryViewModel.libraryModelItems.length,
-              (context, index) {
-                bool isPinned = libraryViewModel.libraryModelItems[index].pinned ?? false;
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 3),
-                  child: SizedBox(
-                    height: 75,
-                    child: Card(
-                      color: Colors.transparent,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              height: context.height,
-                              width: context.width,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                      libraryViewModel.libraryModelItems[index].image ?? '',
-                                    ),
-                                    fit: BoxFit.cover),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 8,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    libraryViewModel.libraryModelItems[index].title ?? '',
-                                    style:
-                                        const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 15),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 4.0),
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              isPinned ? const EdgeInsets.only(right: 4.0) : const EdgeInsets.all(0),
-                                          child: Transform.rotate(
-                                              angle: (240 / 360),
-                                              child: isPinned
-                                                  ? const Icon(
-                                                      Icons.push_pin,
-                                                      color: Color(0xff1DB954),
-                                                      size: 18,
-                                                    )
-                                                  : const SizedBox()),
-                                        ),
-                                        Text(
-                                          libraryViewModel.libraryModelItems[index].subtitle ?? '',
-                                          style: const TextStyle(color: Colors.white70, fontSize: 14),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
-            )),
-          )
+          SliverListBuilder(libraryViewModel: libraryViewModel),
         ];
       }),
       body: const SizedBox(),
+    );
+  }
+}
+
+class SliverListBuilder extends StatelessWidget {
+  const SliverListBuilder({
+    Key? key,
+    required this.libraryViewModel,
+  }) : super(key: key);
+
+  final LibraryViewModel libraryViewModel;
+  @override
+  Widget build(BuildContext context) {
+    return SliverOverlapAbsorber(
+      handle: SliverOverlapAbsorberHandle(),
+      sliver: SliverList(
+          delegate: SliverChildBuilderDelegate(
+        childCount: libraryViewModel.libraryModelItems.length,
+        (context, index) {
+          bool isPinned = libraryViewModel.libraryModelItems[index].pinned ?? false;
+          return LibraryItem(
+            libraryViewModel: libraryViewModel,
+            isPinned: isPinned,
+            image: libraryViewModel.libraryModelItems[index].image ?? '',
+            title: libraryViewModel.libraryModelItems[index].title ?? '',
+            subTitle: libraryViewModel.libraryModelItems[index].subtitle ?? '',
+          );
+        },
+      )),
     );
   }
 }

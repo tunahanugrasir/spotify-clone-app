@@ -10,6 +10,7 @@ class PaddingUtils extends EdgeInsets {
   const PaddingUtils.homeViewPadding() : super.only(left: 8, right: 8, bottom: 120);
   const PaddingUtils.libraryViewSpaceBar() : super.symmetric(horizontal: 16, vertical: 16);
   const PaddingUtils.symmetric() : super.symmetric(horizontal: 8, vertical: 60);
+  const PaddingUtils.searchViewSymmetric() : super.symmetric(vertical: 24);
   const PaddingUtils.symmetricHorizontalLow() : super.symmetric(horizontal: 10);
   const PaddingUtils.horizontalSymmetric() : super.symmetric(horizontal: 3);
   const PaddingUtils.podcastsAndSongs() : super.only(left: 8, right: 8);
@@ -17,11 +18,14 @@ class PaddingUtils extends EdgeInsets {
   const PaddingUtils.justHorizontal() : super.symmetric(horizontal: 8);
   const PaddingUtils.genreImage() : super.only(left: 14, top: 28);
   const PaddingUtils.playPauseIcon() : super.only(right: 20.0);
-  const PaddingUtils.songs() : super.only(left: 8, right: 8);
+  const PaddingUtils.songs() : super.only(left: 8, right: 8, top: 0, bottom: 0);
   const PaddingUtils.onlyLeftEight() : super.only(left: 8);
   const PaddingUtils.onlyLeft() : super.only(left: 5);
   const PaddingUtils.onlyRight() : super.only(right: 8);
   const PaddingUtils.onlyTop() : super.only(top: 16);
+  const PaddingUtils.onlyRightFour() : super.only(right: 16);
+  const PaddingUtils.onlyTopFour() : super.only(top: 4);
+  const PaddingUtils.libraryViewSymetric() : super.symmetric(horizontal: 16.0, vertical: 3);
   const PaddingUtils.allLow() : super.all(5);
   const PaddingUtils.normal() : super.all(8);
   const PaddingUtils.zero() : super.all(0);
@@ -29,12 +33,15 @@ class PaddingUtils extends EdgeInsets {
 
 class IconUtils {
   static const double iconSizeNormal = 28;
+  static const double iconSizeBig = 31;
+  static const double iconSizeSmall = 18;
 }
 
 class ExpandedUtils {
   static const int lowFlex = 1;
   static const int mediumFlex = 2;
   static const int highFlex = 3;
+  static const int maxFlex = 8;
 }
 
 class BottomNavigationBarUtils {

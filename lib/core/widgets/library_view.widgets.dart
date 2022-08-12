@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
+import '../../features/view_model/library_view_model.dart';
 import '../../product/constants/constants_index.dart';
 import '../../product/theme/product_theme.dart';
 import '../../utilities/project_utils.dart';
@@ -95,6 +97,98 @@ class HeaderAndIcons extends StatelessWidget with ProductSetup {
           ),
         ),
       ],
+    );
+  }
+}
+
+class LibraryItem extends StatelessWidget {
+  const LibraryItem({
+    Key? key,
+    required this.libraryViewModel,
+    required this.isPinned,
+    required this.image,
+    required this.title,
+    required this.subTitle,
+  }) : super(key: key);
+
+  final LibraryViewModel libraryViewModel;
+  final bool isPinned;
+  final String image;
+  final String title;
+  final String subTitle;
+  final double _angle = (240 / 360);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const PaddingUtils.libraryViewSymetric(),
+      child: SizedBox(
+        height: context.height * 0.1,
+        child: Card(
+          color: ColorsScheme.transparent,
+          child: Row(
+            children: [
+              Expanded(
+                flex: ExpandedUtils.mediumFlex,
+                child: Container(
+                  height: context.height,
+                  width: context.width,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          image,
+                        ),
+                        fit: BoxFit.cover),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: ExpandedUtils.maxFlex,
+                child: Padding(
+                  padding: const PaddingUtils.onlyLeftEight(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          color: ColorsScheme.secondary,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: const PaddingUtils.onlyTopFour(),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: isPinned ? const PaddingUtils.onlyRightFour() : const PaddingUtils.zero(),
+                              child: Transform.rotate(
+                                  angle: _angle,
+                                  child: isPinned
+                                      ? const Icon(
+                                          Icons.push_pin,
+                                          color: ColorsScheme.spotifyGreen,
+                                          size: IconUtils.iconSizeSmall,
+                                        )
+                                      : const SizedBox()),
+                            ),
+                            Text(
+                              subTitle,
+                              style: const TextStyle(color: ColorsScheme.subtitle, fontSize: 14),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
