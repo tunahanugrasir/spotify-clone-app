@@ -8,7 +8,7 @@ A Flutter Project for UI.
 
 ### Video
 
-<https://user-images.githubusercontent.com/58215634/184406557-af68f9d9-7af0-42d2-9d88-029bb14022b3.mp4>
+https://user-images.githubusercontent.com/58215634/184425296-16d015d3-2437-43ea-9b1d-d425af498aa8.mp4
 
 ### Plugins
 
